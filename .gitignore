@@ -1,0 +1,9 @@
+
+# Database
+*.db
+
+# env
+/venv/
+
+# editor
+.vscode/

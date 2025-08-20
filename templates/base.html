@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Receipt Maker</title>
+  <style>
+    :root{--bg:#0b132b;--panel:#1c2541;--text:#e0e1dd;--accent:#5bc0be;}
+    body{margin:0;font-family:system-ui,Segoe UI,Roboto;background:var(--bg);color:var(--text)}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:960px;margin:0 auto;padding:1.25rem}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+    .card{background:var(--panel);border-radius:14px;padding:1rem;box-shadow:0 10px 25px rgba(0,0,0,.25)}
+    input, textarea{width:100%;padding:.6rem;border-radius:10px;border:1px solid #2b2b3b;background:#111827;color:#e5e7eb}
+    label{font-size:.9rem;opacity:.9}
+    .grid{display:grid;gap:.75rem}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    button{padding:.6rem 1rem;border:0;border-radius:999px;background:var(--accent);color:#001219;font-weight:700;cursor:pointer}
+    table{width:100%;border-collapse:collapse;margin-top:.5rem}
+    th,td{padding:.5rem;border-bottom:1px solid #2a2f4a}
+    tr:hover td{background:#111827}
+    footer{margin-top:2rem;opacity:.6}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2>🧾 Receipt Maker</h2>
+      <nav><a href="/">Home</a></nav>
+    </header>
+    <main class="card">
+      {% block content %}{% endblock %}
+    </main>
+    <footer><p>Local demo using Flask + SQLite + ReportLab.</p></footer>
+  </div>
+</body>
+</html>
