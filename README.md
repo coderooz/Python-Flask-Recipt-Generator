@@ -108,7 +108,7 @@ Visit: **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 ### Version 1
 
 *Form + Receipt Preview*
-![Version 1 Screenshot](./screenshots/Receipt-Maker - Home.png)
+![Version 1 Screenshot](https://github.com/coderooz/Python-Flask-Recipt-Generator/blob/main/screenshots/Receipt-Maker%20-%20Home.png)
 
 ### Version 2
 
