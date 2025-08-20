@@ -1,38 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>Receipt #{{ r.id }}</h3>
-<div class="grid grid-2">
-  <div>
-    <p><strong>{{ r.org_name }}</strong></p>
-    <p>{{ r.org_address }}</p>
-    <p>{{ r.org_phone }} {{ r.org_email }}</p>
+<h2 class="section-title">Receipt #{{ r.id }}</h2>
+
+<div class="receipt-card">
+  <div class="receipt-head">
+    <div>
+      <div class="org-name">{{ r.org_name }}</div>
+      <div class="muted">{{ r.org_address }}</div>
+      <div class="muted">{{ r.org_phone }} {{ r.org_email }}</div>
+    </div>
+    <div class="muted right">
+      <div>Date: {{ r.created_at.strftime("%Y-%m-%d %H:%M") }}</div>
+      <div>Registration No: {{ r.registration_no or "-" }}</div>
+    </div>
   </div>
-  <div style="text-align:right">
-    <p>Date: {{ r.created_at.strftime("%Y-%m-%d %H:%M") }}</p>
-    <p>Registration No: {{ r.reg_no or "-" }}</p>
+
+  <table class="info-table">
+    <tr><th>Name</th><td>{{ r.name }}</td></tr>
+    <tr><th>Guardian</th><td>{{ r.guardian or "-" }}</td></tr>
+    <tr><th>Gender</th><td>{{ r.gender or "-" }}</td></tr>
+    <tr><th>Age</th><td>{{ r.age if r.age is not none else "-" }}</td></tr>
+    <tr><th>Address</th><td>{{ r.address or "-" }}</td></tr>
+    <tr><th>Phone</th><td>{{ r.phone or "-" }}</td></tr>
+    <tr><th>Consultant</th><td>{{ r.consultant or "-" }}</td></tr>
+  </table>
+
+  <table class="line-table">
+    <thead><tr><th>Sl. No</th><th>Particulars</th><th class="right">Amount (INR)</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>{{ r.item_desc }}</td><td class="right">{{ "%.2f"|format(r.amount) }}</td></tr>
+    </tbody>
+  </table>
+
+  <div class="total-row">
+    <strong>Paid Amount: ₹ {{ "%.2f"|format(r.paid_amount) }}</strong>
   </div>
-</div>
 
-<table>
-  <tr><th>Patient</th><td>{{ r.patient_name }}</td></tr>
-  <tr><th>Guardian</th><td>{{ r.guardian_name or "-" }}</td></tr>
-  <tr><th>Address</th><td>{{ r.address or "-" }}</td></tr>
-  <tr><th>Gender/Age</th><td>{{ r.gender_age or "-" }}</td></tr>
-  <tr><th>Phone</th><td>{{ r.phone or "-" }}</td></tr>
-  <tr><th>Consultant</th><td>{{ r.consultant or "-" }}</td></tr>
-</table>
-
-<table>
-  <thead><tr><th>Sl. No</th><th>Particulars</th><th style="text-align:right">Amount (INR)</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>{{ r.item_desc }}</td><td style="text-align:right">{{ "%.2f"|format(r.amount) }}</td></tr>
-  </tbody>
-</table>
-
-<div style="text-align:right;margin-top:.5rem"><strong>Paid Amount: ₹ {{ "%.2f"|format(r.paid_amount) }}</strong></div>
-
-<div style="text-align:right;margin-top:.75rem">
-  <a href="/receipt/{{ r.id }}/pdf"><button type="button">Download PDF</button></a>
-  <a href="/"><button type="button">Create New</button></a>
+  <div class="actions">
+    <a href="{{ url_for('receipt_pdf', rid=r.id) }}"><button type="button">Download PDF</button></a>
+    <a href="{{ url_for('index') }}"><button type="button" class="secondary">Create New</button></a>
+  </div>
 </div>
 {% endblock %}

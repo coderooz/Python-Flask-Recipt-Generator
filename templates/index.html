@@ -1,51 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
-<form method="post" action="/create" class="grid">
-  <h3>Organization</h3>
-  <div class="grid grid-2">
-    <div><label>Organization/Clinic Name</label><input name="org_name" required></div>
-    <div><label>Phone</label><input name="org_phone"></div>
-    <div><label>Email</label><input name="org_email"></div>
-    <div><label>Address</label><input name="org_address"></div>
+<h2 class="section-title">New Receipt</h2>
+{% if cfg %}
+  <div class="org-banner">
+    <div>
+      <strong>{{ cfg.org_name or cfg.get('org_name') }}</strong><br/>
+      {{ cfg.org_address or cfg.get('org_address') }}
+    </div>
+    <div class="muted">
+      {{ cfg.org_phone or cfg.get('org_phone') }}<br/>
+      {{ cfg.org_email or cfg.get('org_email') }}
+    </div>
+  </div>
+{% endif %}
+
+<form method="post" action="{{ url_for('create') }}" class="grid">
+  <h3 class="subheading">Receipt & Client Details</h3>
+  <div class="grid grid-3">
+    <div><label>Registration No.</label><input name="registration_no" placeholder="e.g., 01"></div>
+    <div><label>Name</label><input name="name" placeholder="Full name" required></div>
+    <div><label>Guardian</label><input name="guardian" placeholder="Guardian / Parent / NA"></div>
+    <div><label>Gender</label><input name="gender" placeholder="Male / Female / Other"></div>
+    <div><label>Age</label><input name="age" type="number" min="0" placeholder="e.g., 23"></div>
+    <div><label>Phone</label><input name="phone" placeholder="+91XXXXXXXXXX"></div>
+    <div class="col-span-2"><label>Address</label><input name="address" placeholder="Street, City, State"></div>
+    <div><label>Consultant</label><input name="consultant" placeholder="Doctor / Staff"></div>
   </div>
 
-  <h3>Patient & Receipt Details</h3>
+  <h3 class="subheading">Line Item</h3>
   <div class="grid grid-3">
-    <div><label>Registration No.</label><input name="reg_no"></div>
-    <div><label>Patient Name</label><input name="patient_name" required></div>
-    <div><label>Guardian Name</label><input name="guardian_name"></div>
-    <div><label>Address</label><input name="address"></div>
-    <div><label>Gender / Age</label><input name="gender_age"></div>
-    <div><label>Phone</label><input name="phone"></div>
-    <div><label>Consultant</label><input name="consultant"></div>
-  </div>
-
-  <h3>Line Item</h3>
-  <div class="grid grid-3">
-    <div><label>Particulars</label><input name="item_desc" value="Consultation Fees"></div>
+    <div class="col-span-2"><label>Particulars</label><input name="item_desc" value="Consultation Fees"></div>
     <div><label>Amount (INR)</label><input name="amount" type="number" step="0.01" value="500"></div>
+    <div></div>
+    <div></div>
     <div><label>Paid Amount (INR)</label><input name="paid_amount" type="number" step="0.01" value="500"></div>
   </div>
 
-  <div style="text-align:right;margin-top:.75rem"><button type="submit">Save & Preview</button></div>
+  <div class="actions"><button type="submit">Save & Preview</button></div>
 </form>
 
-<hr style="opacity:.2;margin:1rem 0">
+<hr class="divider"/>
 
-<h3>Recent Receipts</h3>
-<table>
-  <thead><tr><th>ID</th><th>Patient</th><th>Amount</th><th>Date</th><th>Actions</th></tr></thead>
+<h2 class="section-title">Recent Receipts</h2>
+<table class="table">
+  <thead>
+    <tr><th>ID</th><th>Name</th><th>Amount</th><th>Date</th><th>Actions</th></tr>
+  </thead>
   <tbody>
     {% for r in receipts %}
       <tr>
         <td>#{{ r.id }}</td>
-        <td>{{ r.patient_name }}</td>
+        <td>{{ r.name }}</td>
         <td>₹ {{ "%.2f"|format(r.paid_amount) }}</td>
         <td>{{ r.created_at.strftime("%Y-%m-%d %H:%M") }}</td>
-        <td><a href="/receipt/{{ r.id }}">View</a></td>
+        <td><a href="{{ url_for('preview', rid=r.id) }}">View</a></td>
       </tr>
     {% else %}
-      <tr><td colspan="5">No receipts yet.</td></tr>
+      <tr><td colspan="5" class="muted">No receipts yet.</td></tr>
     {% endfor %}
   </tbody>
 </table>

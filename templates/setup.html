@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="section-title">Organization Setup</h2>
+<p class="muted">Set these once. They will be auto-applied to all receipts.</p>
+<form method="post" action="{{ url_for('setup_post') }}" class="grid">
+  <div class="grid grid-2">
+    <div>
+      <label>Organization/Clinic Name</label>
+      <input name="org_name" value="{{ cfg.get('org_name','') }}" required />
+    </div>
+    <div>
+      <label>Phone</label>
+      <input name="org_phone" value="{{ cfg.get('org_phone','') }}" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input name="org_email" value="{{ cfg.get('org_email','') }}" />
+    </div>
+    <div>
+      <label>Address</label>
+      <textarea name="org_address" rows="2">{{ cfg.get('org_address','') }}</textarea>
+    </div>
+  </div>
+  <div class="actions">
+    <button type="submit">Save Settings</button>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,89 @@
+:root{
+  --bg:#0b132b;
+  --panel:#1c2541;
+  --panel-2:#1a2340;
+  --text:#e0e1dd;
+  --muted:#b9c0d0;
+  --accent:#5bc0be;
+  --border:#2a324f;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Open Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+a{color:var(--accent);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+
+.header{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:14px
+}
+.brand{font-size:22px;font-weight:800}
+.card{
+  background:var(--panel);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+.section-title{margin:4px 0 10px 0}
+.subheading{margin:6px 0}
+
+.muted{color:var(--muted)}
+.right{text-align:right}
+
+.org-banner{
+  display:flex;justify-content:space-between;gap:16px;
+  background:var(--panel-2);border:1px solid var(--border);
+  border-radius:12px;padding:12px 14px;margin-bottom:12px
+}
+
+.grid{display:grid;gap:12px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.col-span-2{grid-column:span 2}
+
+label{font-size:.9rem;color:var(--muted);display:block;margin-bottom:6px}
+input,textarea{
+  width:100%;padding:10px 12px;border-radius:10px;
+  border:1px solid var(--border);background:#0e172f;color:var(--text)
+}
+textarea{resize:vertical}
+
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:6px}
+button{
+  padding:10px 16px;border:0;border-radius:999px;background:var(--accent);
+  color:#001219;font-weight:800;cursor:pointer
+}
+button.secondary{background:#28324f;color:#dce2ef}
+
+.divider{opacity:.25;margin:18px 0;border:none;height:1px;background:var(--border)}
+
+.table{width:100%;border-collapse:collapse;border-radius:10px;overflow:hidden}
+.table th,.table td{padding:10px;border-bottom:1px solid var(--border)}
+.table tr:hover td{background:#0f1a33}
+
+.receipt-card{background:var(--panel-2);border-radius:14px;border:1px solid var(--border)}
+.receipt-card .receipt-head{
+  display:flex;justify-content:space-between;padding:16px;border-bottom:1px dashed var(--border)
+}
+.org-name{font-weight:800;font-size:18px}
+
+.info-table,.line-table{width:100%;border-collapse:collapse}
+.info-table th,.info-table td,.line-table th,.line-table td{
+  padding:10px 16px;border-bottom:1px solid var(--border)
+}
+.line-table thead th{background:#0f1a33}
+.line-table .right{text-align:right}
+.total-row{display:flex;justify-content:flex-end;padding:12px 16px}
+
+.footer{margin-top:16px;color:var(--muted)}
+.flash-wrap{margin-bottom:12px}
+.flash{padding:10px 12px;border-radius:10px}
+.flash.success{background:#104f3f;color:#d7ffee}
+.flash.error{background:#4f1020;color:#ffd7e0}
