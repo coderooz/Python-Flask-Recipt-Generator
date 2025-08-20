@@ -6,7 +6,7 @@ This tool allows you to create receipts through a clean web UI, store them local
 ---
 
 ## 📂 Repository
-[GitHub: coderooz/Python-Flask-Recipt-Generator](https://github.com/coderooz/Python-Flask-Recipt-Generator)
+_GitHub_ : [coderooz/Python-Flask-Recipt-Generator](https://github.com/coderooz/Python-Flask-Recipt-Generator)
 
 ---
 
@@ -113,7 +113,7 @@ Visit: **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 ### Version 2
 
 *Setup + Modernized UI*
-![Version 2 Screenshot](https://github.com/coderooz/Python-Flask-Recipt-Generator/blob/main/screenshots/Recipt-Home Page(Receipt-Maker V2).png)
+![Version 2 Screenshot](https://github.com/coderooz/Python-Flask-Recipt-Generator/blob/main/screenshots/Recipt-Home%20Page(Receipt-Maker%20V2).png)
 
 ---
 
