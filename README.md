@@ -113,7 +113,7 @@ Visit: **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 ### Version 2
 
 *Setup + Modernized UI*
-![Version 2 Screenshot](./docs/version2.png)
+![Version 2 Screenshot](https://github.com/coderooz/Python-Flask-Recipt-Generator/blob/main/screenshots/Recipt-Home Page(Receipt-Maker V2).png)
 
 ---
 

@@ -1,6 +1,7 @@
 
-# Database
+# Data files
 *.db
+*.json
 
 # env
 /venv/
